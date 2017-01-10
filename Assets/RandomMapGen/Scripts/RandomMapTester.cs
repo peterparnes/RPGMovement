@@ -116,12 +116,19 @@ public class RandomMapTester : MonoBehaviour {
 		player.name = "Player";
 		player.transform.SetParent (mapContainer.transform);
 
-		PosUtil.CalculatePosition (map.castleTile.id, map.columns, out tmpX, out tmpY);
+		var controller = player.GetComponent<MapMovementController> ();
+		controller.map = map; 
+		controller.tileSize = tileSize;
+		controller.MoveTo (map.castleTile.id);
 
-		tmpX *= (int)tileSize.x;
-		tmpY *= -(int)tileSize.y;
+		controller.tileActionCallback += TileActionCallback;
 
-		player.transform.position = new Vector3 (tmpX, tmpY, 0);
+		var moveScript = Camera.main.GetComponent<MoveCamera> ();
+		moveScript.target = player;
+	}
+
+	void TileActionCallback(int type) {
+		// Debug.Log(type);
 	}
 
 	void ClearMapContainer(){
