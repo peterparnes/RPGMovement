@@ -193,7 +193,7 @@ public class RandomMapTester : MonoBehaviour {
 
 			PosUtil.CalculateIndex (newX, newY, map.columns, out index);
 
-			if (index > -1 && index < map.tiles.Length) {
+			if (newX > -1 && newX < map.columns && index > -1 && index < map.tiles.Length) {
 				var tile = map.tiles [index];
 				tile.visited = true;
 				DecorateTile (index);
