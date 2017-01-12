@@ -65,8 +65,6 @@ public class MapMovementController : MonoBehaviour  {
 
 		PosUtil.CalculateIndex(tmpX, tmpY, map.columns, out tmpIndex);
 
-		Debug.Log (tmpX + " " + tmpY + " " + map.columns + " " + tmpIndex);
-
 		MoveTo(tmpIndex, true);
 	}
 
