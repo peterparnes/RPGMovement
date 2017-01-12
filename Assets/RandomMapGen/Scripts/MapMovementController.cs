@@ -59,7 +59,13 @@ public class MapMovementController : MonoBehaviour  {
 		tmpX += (int)dir.x;
 		tmpY += (int)dir.y;
 
+		if (tmpX < 0 || tmpX >= map.columns) { // do not warp around edge 
+			return;
+		}
+
 		PosUtil.CalculateIndex(tmpX, tmpY, map.columns, out tmpIndex);
+
+		Debug.Log (tmpX + " " + tmpY + " " + map.columns + " " + tmpIndex);
 
 		MoveTo(tmpIndex, true);
 	}
